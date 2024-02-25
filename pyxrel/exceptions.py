@@ -127,7 +127,6 @@ class CloudflareError(XrelToError):
 
 def parse_error(response: requests.Response):
     """Parses an error response (if any) and raises the appropriate exception."""
-
     error_mapping = {
         500: InternalServerError("An internal server error occurred."),
         429: RateLimitError(response) if response.status_code == 429 else None,  # bad code :/ FIXME
@@ -166,8 +165,8 @@ def parse_error(response: requests.Response):
                 exc_class = _ERROR_MAP.get(code)
                 if exc_class:
                     raise exc_class(message)
-                else:
-                    raise XrelToError(f"An unknown error occurred: {message}")
+
+                raise XrelToError(f"An unknown error occurred: {message}")
     except json.decoder.JSONDecodeError:
         raise XrelToError(f"An unknown error occurred: {response.text}")
 
