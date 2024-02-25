@@ -4,7 +4,7 @@ build-backend = "poetry.core.masonry.api"
 
 [tool.poetry]
 name = "pyxrel"
-version = "0.0.0"
+version = "1.0.0"
 description = "A Python implementation of the official xREL API"
 license = "GPL-3.0-only"
 authors = ["u2ly <76696f6c@proton.me>"]
@@ -17,7 +17,7 @@ include = [
 ]
 
 [tool.poetry.dependencies]
-python = "^3.9"
+python = ">=3.8,<4.0"
 requests = "^2.31.0"
 pydantic = "^2.6.2"
 lxml = "^5.1.0"
